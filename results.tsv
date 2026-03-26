@@ -17,3 +17,4 @@ ab2bbf0	10900.1	26676	2048	2	25.1	keep	increase 3rd-ply weight from 0.3 to 0.5
 be581e6	11167.9	16532	1024	0	30.5	keep	add mergeability bonus: reward adjacent equal tiles
 b46b63d	11681.5	16304	1024	0	32.2	keep	increase mergeability bonus: 20 -> 50
 d0ff60e	11810.0	27072	2048	4	32.5	keep	increase board quality weight: 0.1 -> 0.3
+255af92	TBD	TBD	TBD	TBD	TBD	pending	increase continuation weight: 0.5 -> 0.7
