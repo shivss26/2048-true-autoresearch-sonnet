@@ -2,4 +2,4 @@ commit	avg_score	best_score	max_tile	pct_2048	time_sec	status	description
 dc27f3d	2159.3	5348	512	0	0.5	baseline	fixed move order, no strategy
 415c27f	3354.3	7780	512	0	1.0	keep	greedy: pick move with highest immediate score
 af0d743	7597.3	14512	1024	30	5.2	keep	lookahead + board quality heuristics
-3089aa2	pending	pending	pending	pending	pending	pending	2-ply lookahead: evaluate 3 moves ahead
+85c273d	10323.1	23196	2048	2	19.3	keep	2-ply lookahead: evaluate 3 moves ahead
