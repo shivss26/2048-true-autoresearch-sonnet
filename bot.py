@@ -74,7 +74,7 @@ def choose_move(board, score):
 
                 best_continuation = max(best_continuation, cont_value)
 
-            value += best_continuation * 0.5
+            value += best_continuation * 0.8
 
         if value > best_value:
             best_value = value
