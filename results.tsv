@@ -11,3 +11,4 @@ c118cbe	7791.2	14492	1024	0	16.5	discard	improved evaluation: clustering/corner 
 144e38c	8621.0	15344	1024	0	14.4	discard	simplify evaluation: remove monotonicity penalties
 ea8e8eb	10635.4	16412	1024	0	23.8	keep	include board quality in 3rd ply lookahead evaluation
 8b37ccf	9102.2	16000	1024	0	20.5	discard	increase board quality weight hurt performance: over-emphasized structure
+28dc2c2	TBD	TBD	TBD	TBD	TBD	pending	increase monotonicity penalty from -1 to -10

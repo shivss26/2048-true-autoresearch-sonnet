@@ -21,12 +21,12 @@ def evaluate_board(board):
     for row in board:
         for i in range(len(row) - 1):
             if (row[i] > row[i + 1]) != (row[0] > row[1]):
-                mono -= 1
+                mono -= 10
     for c in range(4):
         col = [board[r][c] for r in range(4)]
         for i in range(len(col) - 1):
             if (col[i] > col[i + 1]) != (col[0] > col[1]):
-                mono -= 1
+                mono -= 10
 
     # Emptiness bonus
     emptiness = count_empty(board) * 50
