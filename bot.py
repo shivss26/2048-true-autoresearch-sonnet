@@ -62,7 +62,7 @@ def choose_move(board, score):
         value = score_gained
 
         # Board quality
-        value += evaluate_board(new_board) * 0.3
+        value += evaluate_board(new_board) * 0.4
 
         # 2-ply lookahead: for each next move, check best third move
         next_valid = get_valid_moves(new_board)
@@ -73,7 +73,7 @@ def choose_move(board, score):
                 next_board, next_score, _ = move(new_board, next_dir)
 
                 # Value of next move + board quality
-                cont_value = next_score + evaluate_board(next_board) * 0.3
+                cont_value = next_score + evaluate_board(next_board) * 0.4
 
                 # Best greedy move from the next board (3rd ply)
                 next_next_valid = get_valid_moves(next_board)
@@ -81,7 +81,7 @@ def choose_move(board, score):
                     best_third = 0
                     for third_dir in next_next_valid:
                         third_board, third_score, _ = move(next_board, third_dir)
-                        best_third = max(best_third, third_score + evaluate_board(third_board) * 0.3)
+                        best_third = max(best_third, third_score + evaluate_board(third_board) * 0.4)
                     cont_value += best_third * 0.5
 
                 best_continuation = max(best_continuation, cont_value)
