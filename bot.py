@@ -16,6 +16,18 @@ def count_empty(board):
 
 def evaluate_board(board):
     """Evaluate board position quality (not score, but structural quality)."""
+    # Monotonicity: penalty for adjacent tiles in different orders
+    mono = 0
+    for row in board:
+        for i in range(len(row) - 1):
+            if (row[i] > row[i + 1]) != (row[0] > row[1]):
+                mono -= 1
+    for c in range(4):
+        col = [board[r][c] for r in range(4)]
+        for i in range(len(col) - 1):
+            if (col[i] > col[i + 1]) != (col[0] > col[1]):
+                mono -= 1
+
     # Emptiness bonus
     emptiness = count_empty(board) * 50
 
@@ -31,7 +43,7 @@ def evaluate_board(board):
             if col[i] == col[i + 1] and col[i] > 0:
                 merges += 1
 
-    return emptiness + merges * 50
+    return emptiness + mono + merges * 50
 
 
 def choose_move(board, score):
