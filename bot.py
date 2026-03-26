@@ -16,18 +16,16 @@ def count_empty(board):
 
 def evaluate_board(board):
     """Evaluate board position quality (not score, but structural quality)."""
-    # Monotonicity: penalty for adjacent non-zero tiles in different orders
+    # Monotonicity: penalty for adjacent tiles in different orders
     mono = 0
     for row in board:
-        non_zero = [x for x in row if x > 0]
-        for i in range(len(non_zero) - 1):
-            if (non_zero[i] > non_zero[i + 1]) != (non_zero[0] > non_zero[1]):
+        for i in range(len(row) - 1):
+            if (row[i] > row[i + 1]) != (row[0] > row[1]):
                 mono -= 1
     for c in range(4):
         col = [board[r][c] for r in range(4)]
-        non_zero = [x for x in col if x > 0]
-        for i in range(len(non_zero) - 1):
-            if (non_zero[i] > non_zero[i + 1]) != (non_zero[0] > non_zero[1]):
+        for i in range(len(col) - 1):
+            if (col[i] > col[i + 1]) != (col[0] > col[1]):
                 mono -= 1
 
     # Emptiness bonus
