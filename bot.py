@@ -31,19 +31,19 @@ def evaluate_board(board):
     # Emptiness bonus
     emptiness = count_empty(board) * 50
 
-    # Mergeability bonus: reward adjacent equal tiles (ready to merge), weighted by value
+    # Mergeability bonus: reward adjacent equal tiles (ready to merge)
     merges = 0
     for row in board:
         for i in range(len(row) - 1):
             if row[i] == row[i + 1] and row[i] > 0:
-                merges += row[i]  # Weight by tile value instead of count
+                merges += 1
     for c in range(4):
         col = [board[r][c] for r in range(4)]
         for i in range(len(col) - 1):
             if col[i] == col[i + 1] and col[i] > 0:
-                merges += col[i]  # Weight by tile value instead of count
+                merges += 1
 
-    return emptiness + mono + merges
+    return emptiness + mono + merges * 50
 
 
 def choose_move(board, score):
