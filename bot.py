@@ -47,7 +47,7 @@ def evaluate_board(board):
 
 
 def choose_move(board, score):
-    """3-ply lookahead: evaluate move consequences 3 steps ahead."""
+    """2-ply lookahead: evaluate move consequences 2 steps ahead."""
     valid = get_valid_moves(board)
     if not valid:
         return 'up'
@@ -64,7 +64,7 @@ def choose_move(board, score):
         # Board quality
         value += evaluate_board(new_board) * 0.3
 
-        # 3-ply lookahead: for each next move, check best third move, then fourth
+        # 2-ply lookahead: for each next move, check best third move
         next_valid = get_valid_moves(new_board)
         if next_valid:
             best_continuation = -float('inf')
@@ -75,24 +75,13 @@ def choose_move(board, score):
                 # Value of next move + board quality
                 cont_value = next_score + evaluate_board(next_board) * 0.3
 
-                # Best move from the next board (3rd ply)
+                # Best greedy move from the next board (3rd ply)
                 next_next_valid = get_valid_moves(next_board)
                 if next_next_valid:
                     best_third = 0
                     for third_dir in next_next_valid:
                         third_board, third_score, _ = move(next_board, third_dir)
-                        third_value = third_score + evaluate_board(third_board) * 0.3
-
-                        # Look ahead to 4th ply
-                        fourth_valid = get_valid_moves(third_board)
-                        if fourth_valid:
-                            best_fourth = 0
-                            for fourth_dir in fourth_valid:
-                                fourth_board, fourth_score, _ = move(third_board, fourth_dir)
-                                best_fourth = max(best_fourth, fourth_score + evaluate_board(fourth_board) * 0.3)
-                            third_value += best_fourth * 0.3
-
-                        best_third = max(best_third, third_value)
+                        best_third = max(best_third, third_score + evaluate_board(third_board) * 0.3)
                     cont_value += best_third * 0.5
 
                 best_continuation = max(best_continuation, cont_value)
