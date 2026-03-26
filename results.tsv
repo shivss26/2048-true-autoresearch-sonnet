@@ -26,3 +26,4 @@ f5fc756	9334.6	16136	1024	0	36.7	discard	improve monotonicity: reward consistent
 bf73299	11196.1	27420	2048	4	29.6	discard	refine monotonicity: only evaluate non-zero tiles to improve flexibility
 9cf2dbd	DNF	DNF	DNF	DNF	62.0	discard	add 4-ply lookahead with 0.3 weight: exceeded time limit
 101361d	10969.9	25152	2048	6	29.4	discard	increase board quality weight: 0.3 -> 0.4 over-emphasized structure
+b8f783f	pending	pending	pending	pending	pending	pending	reduce board quality weight: 0.3 -> 0.2, increase continuation: 0.5 -> 0.6
