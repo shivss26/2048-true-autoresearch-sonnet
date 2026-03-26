@@ -16,54 +16,22 @@ def count_empty(board):
 
 def evaluate_board(board):
     """Evaluate board position quality (not score, but structural quality)."""
-    # Monotonicity: strongly penalize disorder in rows/cols
+    # Monotonicity: penalty for adjacent tiles in different orders
     mono = 0
-
-    # Check each row for monotonicity
     for row in board:
         for i in range(len(row) - 1):
-            # If non-zero tiles are out of order, penalize
-            if row[i] != 0 and row[i + 1] != 0:
-                if row[i] > row[i + 1]:
-                    mono -= 2  # Decreasing
-                # Increasing is okay
-
-    # Check each column for monotonicity
+            if (row[i] > row[i + 1]) != (row[0] > row[1]):
+                mono -= 1
     for c in range(4):
         col = [board[r][c] for r in range(4)]
         for i in range(len(col) - 1):
-            if col[i] != 0 and col[i + 1] != 0:
-                if col[i] > col[i + 1]:
-                    mono -= 2
+            if (col[i] > col[i + 1]) != (col[0] > col[1]):
+                mono -= 1
 
-    # Emptiness bonus: more empty cells = more room to merge
-    emptiness = count_empty(board) * 100
+    # Emptiness bonus
+    emptiness = count_empty(board) * 50
 
-    # Cluster bonus: reward tiles that are close together (helps merging)
-    cluster = 0
-    for r in range(4):
-        for c in range(4):
-            if board[r][c] > 0:
-                # Check neighbors: adjacent same-value tiles are good
-                neighbors = 0
-                if c > 0 and board[r][c - 1] == board[r][c]:
-                    neighbors += 1
-                if c < 3 and board[r][c + 1] == board[r][c]:
-                    neighbors += 1
-                if r > 0 and board[r - 1][c] == board[r][c]:
-                    neighbors += 1
-                if r < 3 and board[r + 1][c] == board[r][c]:
-                    neighbors += 1
-                cluster += neighbors * board[r][c] * 2
-
-    # Corner bonus: reward keeping large tiles in corners
-    corner_bonus = 0
-    corners = [(0, 0), (0, 3), (3, 0), (3, 3)]
-    for r, c in corners:
-        if board[r][c] > 256:
-            corner_bonus += board[r][c] * 2
-
-    return emptiness + mono + cluster + corner_bonus
+    return emptiness + mono
 
 
 def choose_move(board, score):
