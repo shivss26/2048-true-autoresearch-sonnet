@@ -13,4 +13,4 @@ ea8e8eb	10635.4	16412	1024	0	23.8	keep	include board quality in 3rd ply lookahea
 8b37ccf	9102.2	16000	1024	0	20.5	discard	increase board quality weight hurt performance: over-emphasized structure
 d0f5c26	10534.7	16188	1024	0	22.8	discard	increase monotonicity penalty from -1 to -10 reduced exploratory moves
 4bfbd2f	9857.6	23380	2048	2	22.1	discard	refine monotonicity: evaluate non-zero subsequences only hurts strategy
-1785d9b	pending	pending	pending	pending	pending	pending	increase 3rd-ply weight from 0.3 to 0.5
+ab2bbf0	10900.1	26676	2048	2	25.1	keep	increase 3rd-ply weight from 0.3 to 0.5
