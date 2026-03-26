@@ -35,7 +35,7 @@ def evaluate_board(board):
 
 
 def choose_move(board, score):
-    """Improved greedy: immediate score + board quality + lookahead."""
+    """2-ply lookahead: evaluate move consequences 2 steps ahead."""
     valid = get_valid_moves(board)
     if not valid:
         return 'up'
@@ -52,15 +52,29 @@ def choose_move(board, score):
         # Board quality
         value += evaluate_board(new_board) * 0.1
 
-        # Simple lookahead: try greedy next move
+        # 2-ply lookahead: for each next move, check best third move
         next_valid = get_valid_moves(new_board)
         if next_valid:
-            lookahead_scores = []
+            best_continuation = -float('inf')
+
             for next_dir in next_valid:
-                _, next_score, _ = move(new_board, next_dir)
-                lookahead_scores.append(next_score)
-            if lookahead_scores:
-                value += max(lookahead_scores) * 0.5
+                next_board, next_score, _ = move(new_board, next_dir)
+
+                # Value of next move + board quality
+                cont_value = next_score + evaluate_board(next_board) * 0.1
+
+                # Best greedy move from the next board (3rd ply)
+                next_next_valid = get_valid_moves(next_board)
+                if next_next_valid:
+                    best_third = 0
+                    for third_dir in next_next_valid:
+                        _, third_score, _ = move(next_board, third_dir)
+                        best_third = max(best_third, third_score)
+                    cont_value += best_third * 0.3
+
+                best_continuation = max(best_continuation, cont_value)
+
+            value += best_continuation * 0.5
 
         if value > best_value:
             best_value = value
