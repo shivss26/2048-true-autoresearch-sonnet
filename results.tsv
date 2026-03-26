@@ -7,4 +7,4 @@ c118cbe	7791.2	14492	1024	0	16.5	discard	improved evaluation: clustering/corner 
 4cf954d	8926.6	16056	1024	0	19.9	discard	improved monotonicity: proper detection confused strategy
 2727661	9631.8	16224	1024	0	17.8	discard	increased weights hurt performance; over-emphasizing board quality and lookahead
 61695f7	8604.8	15644	1024	0	21.1	discard	proper monotonicity metric: reward genuine increasing/decreasing sequences
-9e52066	0	0	0	0	0	pending	increased lookahead continuation weight: 0.5→0.8
+9e52066	9477.2	15780	1024	0	17.7	discard	increased lookahead continuation weight hurt performance: 10323→9477
