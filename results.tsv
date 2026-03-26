@@ -15,3 +15,4 @@ d0f5c26	10534.7	16188	1024	0	22.8	discard	increase monotonicity penalty from -1 
 4bfbd2f	9857.6	23380	2048	2	22.1	discard	refine monotonicity: evaluate non-zero subsequences only hurts strategy
 ab2bbf0	10900.1	26676	2048	2	25.1	keep	increase 3rd-ply weight from 0.3 to 0.5
 be581e6	11167.9	16532	1024	0	30.5	keep	add mergeability bonus: reward adjacent equal tiles
+b46b63d	pending	pending	pending	pending	pending	pending	increase mergeability bonus: 20 -> 50
