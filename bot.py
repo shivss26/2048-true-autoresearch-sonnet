@@ -16,17 +16,29 @@ def count_empty(board):
 
 def evaluate_board(board):
     """Evaluate board position quality (not score, but structural quality)."""
-    # Monotonicity: penalty for adjacent tiles in different orders
+    # Proper monotonicity: bonus for sequences that are either non-decreasing or non-increasing
     mono = 0
     for row in board:
-        for i in range(len(row) - 1):
-            if (row[i] > row[i + 1]) != (row[0] > row[1]):
-                mono -= 1
+        # Skip rows with all zeros
+        if all(x == 0 for x in row):
+            mono += 10
+        else:
+            # Check increasing direction
+            inc = sum(1 for i in range(len(row) - 1) if row[i] <= row[i + 1] or row[i] == 0 or row[i + 1] == 0)
+            # Check decreasing direction
+            dec = sum(1 for i in range(len(row) - 1) if row[i] >= row[i + 1] or row[i] == 0 or row[i + 1] == 0)
+            mono += max(inc, dec)
+
     for c in range(4):
         col = [board[r][c] for r in range(4)]
-        for i in range(len(col) - 1):
-            if (col[i] > col[i + 1]) != (col[0] > col[1]):
-                mono -= 1
+        if all(x == 0 for x in col):
+            mono += 10
+        else:
+            # Check increasing direction
+            inc = sum(1 for i in range(len(col) - 1) if col[i] <= col[i + 1] or col[i] == 0 or col[i + 1] == 0)
+            # Check decreasing direction
+            dec = sum(1 for i in range(len(col) - 1) if col[i] >= col[i + 1] or col[i] == 0 or col[i + 1] == 0)
+            mono += max(inc, dec)
 
     # Emptiness bonus
     emptiness = count_empty(board) * 50

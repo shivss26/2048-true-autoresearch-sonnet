@@ -6,3 +6,4 @@ af0d743	7597.3	14512	1024	30	5.2	keep	lookahead + board quality heuristics
 c118cbe	7791.2	14492	1024	0	16.5	discard	improved evaluation: clustering/corner bonus confused strategy
 4cf954d	8926.6	16056	1024	0	19.9	discard	improved monotonicity: proper detection confused strategy
 2727661	9631.8	16224	1024	0	17.8	discard	increased weights hurt performance; over-emphasizing board quality and lookahead
+61695f7	TBD	TBD	TBD	TBD	TBD	pending	proper monotonicity metric: reward genuine increasing/decreasing sequences
