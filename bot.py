@@ -6,23 +6,22 @@ It receives the current board state and score, and must return one of:
 'up', 'down', 'left', 'right'
 """
 
-from game import get_valid_moves
+from game import get_valid_moves, move, copy_board
 
 
 def choose_move(board, score):
-    """Pick a move given the current board and score.
-
-    Baseline strategy: pick the first valid move in a fixed order.
-    This is the dumbest possible strategy — it doesn't even look
-    at the board state, just tries moves in order.
-    """
+    """Greedy strategy: pick the move that maximizes immediate score gain."""
     valid = get_valid_moves(board)
     if not valid:
         return 'up'
 
-    # Just pick the first valid move. No strategy at all.
-    for direction in ['up', 'left', 'down', 'right']:
-        if direction in valid:
-            return direction
+    best_move = None
+    best_score = -1
 
-    return valid[0]
+    for direction in valid:
+        _, score_gained, _ = move(board, direction)
+        if score_gained > best_score:
+            best_score = score_gained
+            best_move = direction
+
+    return best_move if best_move else valid[0]
