@@ -21,4 +21,4 @@ d0ff60e	11810.0	27072	2048	4	32.5	keep	increase board quality weight: 0.1 -> 0.3
 86f3308	11034.8	23320	2048	2	30.2	discard	weight mergeability by tile value instead of count: reduces flexibility
 f5fc756	9334.6	16136	1024	0	36.7	discard	improve monotonicity: reward consistent ordering, penalize disorder: too restrictive
 811f0c1	10033.8	21524	2048	2	21.9	discard	remove monotonicity penalty: simplify evaluation hurts strategy despite restrictiveness
-3cad52f	pending	pending	pending	pending	pending	pending	add corner bonus: reward max tile in corners for strategic stability
+1150eb6	9565.3	23484	2048	2	27.4	discard	add corner bonus: corner constraint too aggressive, hurts move flexibility
