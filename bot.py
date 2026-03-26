@@ -43,7 +43,16 @@ def evaluate_board(board):
             if col[i] == col[i + 1] and col[i] > 0:
                 merges += 1
 
-    return emptiness + mono + merges * 50
+    # Corner bonus: reward keeping the max tile in a corner
+    max_val = max(max(row) for row in board)
+    corner_bonus = 0
+    if max_val > 0:
+        for r, c in [(0, 0), (0, 3), (3, 0), (3, 3)]:
+            if board[r][c] == max_val:
+                corner_bonus = 200
+                break
+
+    return emptiness + mono + merges * 50 + corner_bonus
 
 
 def choose_move(board, score):
