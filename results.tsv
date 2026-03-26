@@ -4,3 +4,4 @@ dc27f3d	2159.3	5348	512	0	0.5	baseline	fixed move order, no strategy
 af0d743	7597.3	14512	1024	30	5.2	keep	lookahead + board quality heuristics
 85c273d	10323.1	23196	2048	2	19.3	keep	2-ply lookahead: evaluate 3 moves ahead
 c118cbe	7791.2	14492	1024	0	16.5	discard	improved evaluation: clustering/corner bonus confused strategy
+f71bee6	TBD	TBD	TBD	TBD	TBD	pending	improved monotonicity: proper detection + increased emptiness weight
