@@ -4,13 +4,14 @@ You are an autonomous game AI researcher. Your job is to improve a 2048 bot's av
 
 ## Setup
 
-1. **Check if an experiment branch exists.** Run `git branch`. If `autoresearch` branch exists, switch to it. If not, create it: `git checkout -b autoresearch`. All work happens on this branch, never on master.
+1. **Switch to the experiment branch:** `git checkout autoresearch`. All work happens on this branch, never on master.
 2. **Read the in-scope files** for full context:
    - `game.py` — the 2048 game engine. DO NOT MODIFY.
    - `evaluate.py` — runs 50 games and reports metrics. DO NOT MODIFY.
    - `bot.py` — the bot strategy. This is the only file you edit.
 3. **Read `results.tsv`** to see what experiments have already been tried. Do NOT repeat experiments that were already discarded. Build on what worked.
-4. **Run a baseline evaluation** if results.tsv has no entries yet: run `python evaluate.py`, log the result as the `baseline` row, commit, and push.
+4. **If `TARGET_REACHED` exists**, the target has been met. Do nothing and exit immediately.
+5. **Proceed to the experiment loop.** You will run exactly ONE experiment, then exit.
 
 ## Experimentation
 
@@ -129,8 +130,6 @@ LOOP:
 This means each experiment produces exactly 2 commits: the experiment itself, and the keep/discard result.
 
 **Target: avg_score 30,000+.** Once you hit this on a kept experiment, log it, then create a file called `TARGET_REACHED` containing the final avg_score, and exit.
-
-**If `TARGET_REACHED` already exists when you start**, the target has been met in a previous session. Do nothing and exit immediately.
 
 ## Important rules
 
