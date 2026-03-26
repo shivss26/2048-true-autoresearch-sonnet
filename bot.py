@@ -68,8 +68,8 @@ def choose_move(board, score):
                 if next_next_valid:
                     best_third = 0
                     for third_dir in next_next_valid:
-                        _, third_score, _ = move(next_board, third_dir)
-                        best_third = max(best_third, third_score)
+                        third_board, third_score, _ = move(next_board, third_dir)
+                        best_third = max(best_third, third_score + evaluate_board(third_board) * 0.1)
                     cont_value += best_third * 0.3
 
                 best_continuation = max(best_continuation, cont_value)

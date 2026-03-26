@@ -9,3 +9,4 @@ c118cbe	7791.2	14492	1024	0	16.5	discard	improved evaluation: clustering/corner 
 61695f7	8604.8	15644	1024	0	21.1	discard	proper monotonicity metric: reward genuine increasing/decreasing sequences
 9e52066	9477.2	15780	1024	0	17.7	discard	increased lookahead continuation weight hurt performance: 10323→9477
 144e38c	8621.0	15344	1024	0	14.4	discard	simplify evaluation: remove monotonicity penalties
+d5191cf	PENDING	PENDING	PENDING	PENDING	PENDING	pending	include board quality in 3rd ply lookahead evaluation
