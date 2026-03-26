@@ -119,7 +119,7 @@ LOOP:
    - **DISCARD** if evaluation exceeded the 60-second time limit (DNF). Log `DNF` for avg_score.
    - If kept: Update the `pending` row in results.tsv to `keep`. Commit with message `[KEEP] <description>` and push.
    - If discarded: Revert `bot.py` back to the previous baseline state. Update the `pending` row to `discard`. Commit with message `[DISCARD] revert: <description>` and push.
-9. Exit. The next agent invocation will continue from step 1.
+9. **STOP. You are done. Exit immediately after this step.** Do not start another experiment. Do not loop back to step 1. The wrapper script will spawn a fresh agent for the next experiment.
 
 **Commit message format:**
 - Experiment + TSV log: `[EXPERIMENT] added corner heuristic to evaluation`
@@ -139,6 +139,6 @@ This means each experiment produces exactly 2 commits: the experiment itself, an
 - **The baseline ratchets forward.** When an experiment is kept, it becomes the new baseline. Always compare against the most recent kept version.
 - **Run evaluation exactly once per experiment.** Do not retry. If it fails, log the experiment as `error` and exit.
 - **Never work on master.** All experiments happen on the `autoresearch` branch.
-- **Do ONE experiment per session, then exit.** The wrapper script handles restarting you.
+- **CRITICAL: Do exactly ONE experiment per session, then exit.** You must exit after step 9. Do NOT loop, do NOT start a second experiment. A fresh agent will be spawned for the next experiment. Violating this rule wastes context and breaks the experiment loop.
 - **Stay within the time budget.** If evaluation takes more than 60 seconds, the strategy is too slow. Optimize the heuristic, don't just add more search depth.
 - **Push after every keep/discard decision.** Use `git push -u origin autoresearch`.
