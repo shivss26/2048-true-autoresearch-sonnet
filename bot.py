@@ -50,7 +50,7 @@ def choose_move(board, score):
         value = score_gained
 
         # Board quality
-        value += evaluate_board(new_board) * 0.1
+        value += evaluate_board(new_board) * 0.25
 
         # 2-ply lookahead: for each next move, check best third move
         next_valid = get_valid_moves(new_board)
