@@ -29,7 +29,7 @@ def evaluate_board(board):
                 mono -= 1
 
     # Emptiness bonus
-    emptiness = count_empty(board) * 100
+    emptiness = count_empty(board) * 50
 
     # Mergeability bonus: reward adjacent equal tiles (ready to merge)
     merges = 0
